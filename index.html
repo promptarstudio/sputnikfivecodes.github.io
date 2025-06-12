@@ -1,0 +1,414 @@
+<!-- Sugestão de estrutura HTML para Five Codes Store -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Five Codes Store</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #121212;
+      color: #f8f9fa;
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: linear-gradient(90deg, #00E5FF 0%, #F50057 50%, #D500F9 100%);
+      padding: 40px 0;
+      text-align: center;
+    }
+    h1 {
+      color: #212529;
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    section {
+      margin: 40px auto;
+      max-width: 900px;
+      padding: 24px;
+      background: #181818;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px #0002;
+    }
+    h2 {
+      color: #FF8FA3;
+      margin-top: 0;
+    }
+    a.button {
+      display: inline-block;
+      background: linear-gradient(90deg, #00E5FF 0%, #F50057 50%, #D500F9 100%);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 8px 0;
+      transition: opacity 0.2s;
+    }
+    a.button:hover {
+      opacity: 0.8;
+    }
+    .categorias, .cursos, .modelos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+    }
+    .categoria, .curso, .modelo, .proposta-card {
+      flex: 0 1 320px;
+      background: #23232b;
+      border-radius: 18px;
+      padding: 32px 28px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18), 0 1.5px 8px 0 rgba(0,0,0,0.10);
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .categoria:hover, .curso:hover, .modelo:hover, .proposta-card:hover {
+      box-shadow: 0 16px 40px 0 rgba(0,0,0,0.28), 0 3px 16px 0 rgba(0,0,0,0.15);
+      transform: translateY(-4px) scale(1.025);
+    }
+    .categoria img,
+    .curso img,
+    .modelo img,
+    .proposta-img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 12px 0 rgba(0,0,0,0.18);
+      position: relative;
+    }
+    .video {
+      margin: 16px 0;
+      text-align: center;
+    }
+    .video iframe {
+      width: 100%;
+      max-width: 100%;
+      height: 260px;
+      border-radius: 8px;
+      object-fit: cover;
+      object-position: top;
+    }
+    textarea {
+      width: 100%;
+      min-height: 70px;
+      border-radius: 10px;
+      border: 1.5px solid #333;
+      background: #18181f;
+      color: #f8f9fa;
+      padding: 14px;
+      margin-top: 12px;
+      box-sizing: border-box;
+      resize: vertical;
+      font-size: 1rem;
+      transition: border 0.2s;
+    }
+    textarea:focus {
+      outline: none;
+      border: 1.5px solid #00E5FF;
+      background: #23232b;
+    }
+    .proposta-textos {
+      width: 100%;
+      padding: 0 8px;
+      box-sizing: border-box;
+    }
+    .proposta-textos h2 {
+      color: #00E5FF;
+      font-size: 2.1rem;
+      margin-bottom: 0.3em;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+    }
+    .proposta-textos h3 {
+      color: #F50057;
+      font-size: 1.2rem;
+      margin-top: 0;
+      margin-bottom: 1.2em;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+    .proposta-textos p {
+      font-size: 1.15rem;
+      color: #f8f9fa;
+      margin-bottom: 1.5em;
+      line-height: 1.6;
+    }
+    @media (max-width: 700px) {
+      .categorias, .cursos, .modelos { flex-direction: column; }
+    }
+    @media (max-width: 900px) {
+      .categorias, .cursos, .modelos { flex-direction: column; align-items: center; }
+      .sessao-cards { flex-direction: column; align-items: center; }
+      .mini-card { width: 100%; max-width: 100%; }
+    }
+    /* Estilos adicionais para a classe container */
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .sessao-card {
+      background: #18181f;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18), 0 1.5px 8px 0 rgba(0,0,0,0.10);
+      padding: 28px 18px 24px 18px;
+      margin-bottom: 40px;
+    }
+    .sessao-cards {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+    }
+    .mini-card {
+      background: #23232b;
+      border-radius: 14px;
+      padding: 20px 14px;
+      flex: 1 1 0;
+      min-width: 0;
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      box-shadow: 0 4px 16px 0 rgba(0,0,0,0.13);
+    }
+  </style>
+</head>
+<body>
+  <!-- MENU FIXO NO TOPO -->
+  <nav style="width:100%; background:#181818; color:#fff; padding:0 32px; height:56px; display:flex; align-items:center; justify-content:space-between; position:fixed; top:0; left:0; z-index:10000; box-shadow:0 2px 8px #0002;">
+    <span style="font-weight:900; letter-spacing:0.1em; font-family:'Montserrat',sans-serif;">FIVE CODES</span>
+    <ul style="display:flex; gap:24px; list-style:none; margin:0; padding:0;">
+      <li><a href="#proposta" style="color:#fff; text-decoration:none; font-weight:bold;">Proposta</a></li>
+      <li><a href="#produtos" style="color:#fff; text-decoration:none; font-weight:bold;">Produtos</a></li>
+      <li><a href="#cursos" style="color:#fff; text-decoration:none; font-weight:bold;">Cursos</a></li>
+      <li><a href="#experimente" style="color:#fff; text-decoration:none; font-weight:bold;">Experimente IA</a></li>
+      <li><a href="#blog" style="color:#fff; text-decoration:none; font-weight:bold;">Blog</a></li>
+    </ul>
+  </nav>
+  <div style="height:56px;"></div> <!-- Espaço para o menu fixo não sobrepor o conteúdo -->
+
+  <!-- HERO VIDEO EM LOOP COM TEXTO DESTACADO -->
+  <div style="position:relative; width:100%; height:320px; display:flex; align-items:center; justify-content:center; overflow:hidden; margin-bottom:32px;">
+    <video autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover; object-position:center; filter:brightness(0.7);">
+      <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+      Seu navegador não suporta vídeo em HTML5.
+    </video>
+    <span style="
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      color:#212529;
+      font-size:3rem;
+      font-weight:900;
+      font-family:'Montserrat',sans-serif;
+      letter-spacing:0.15em;
+      text-transform:uppercase;
+      text-align:center;
+      ">
+      FIVE CODES STORE
+    </span>
+  </div>
+
+  <!-- Imagem de topo (logo ou destaque) -->
+  <div style="width:100%; display:flex; justify-content:center; align-items:center; margin-top:32px;">
+    <img src="https://via.placeholder.com/220x80?text=LOGO+OU+DESTAQUE" alt="Logo Five Codes Store" style="max-width:220px; height:auto;">
+  </div>
+
+  <!-- Adicione uma classe container para centralizar e limitar a largura -->
+  <div class="container">
+    <!-- Seção de proposta -->
+    <section id="proposta" style="margin-top:32px;">
+      <div class="sessao-card">
+        <div class="sessao-titulo">
+          <h2>Nossa Proposta</h2>
+        </div>
+        <div class="sessao-cards">
+          <div class="mini-card">
+            <h3>Nossa Missão</h3>
+            <h4>Democratizar a Inteligência Artificial</h4>
+            <p>Tornar o acesso à IA simples, acessível e prático para todos os públicos, do iniciante ao avançado.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Educação & Inovação</h3>
+            <h4>Conteúdo de Qualidade</h4>
+            <p>Oferecemos cursos, exemplos práticos e materiais didáticos para impulsionar seu aprendizado em IA.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Tecnologia de Ponta</h3>
+            <h4>Infraestrutura Moderna</h4>
+            <p>Produtos, servidores e modelos de IA atualizados para você experimentar e inovar com confiança.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modelos de IA (Produtos) -->
+    <section id="produtos">
+      <h2>Produtos em Destaque</h2>
+      <div class="modelos">
+        <div class="modelo">
+          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Modelo de Tradução">
+          <h3>Modelo de Tradução</h3>
+          <p>Modelo de IA para tradução de textos.</p>
+          <a class="button" href="https://huggingface.co/transformers/model1" target="_blank">Ver modelo</a>
+        </div>
+        <div class="modelo">
+          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Modelo de Classificação de Texto">
+          <h3>Modelo de Classificação de Texto</h3>
+          <p>Modelo de IA para classificação de textos.</p>
+          <a class="button" href="https://huggingface.co/transformers/model2" target="_blank">Ver modelo</a>
+        </div>
+        <div class="modelo">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Modelo de Resumo de Texto">
+          <h3>Modelo de Resumo de Texto</h3>
+          <p>Modelo de IA para resumir textos automaticamente.</p>
+          <a class="button" href="#" target="_blank">Ver modelo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cursos -->
+    <section id="cursos">
+      <h2>Cursos</h2>
+      <div class="cursos">
+        <div class="curso">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Introdução à Inteligência Artificial">
+          <h3>Introdução à Inteligência Artificial</h3>
+          <p>Um curso introdutório sobre os conceitos básicos de IA.</p>
+          <span>R$ 99,99</span>
+          <a class="button" href="https://afiliado.com/curso001" target="_blank">Inscreva-se aqui</a>
+        </div>
+        <div class="curso">
+          <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=400&q=80" alt="Aprendizado de Máquina Avançado">
+          <h3>Aprendizado de Máquina Avançado</h3>
+          <p>Um curso avançado sobre técnicas de aprendizado de máquina.</p>
+          <span>R$ 199,99</span>
+          <a class="button" href="https://afiliado.com/curso002" target="_blank">Inscreva-se aqui</a>
+        </div>
+        <div class="curso">
+          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Curso de Visão Computacional">
+          <h3>Curso de Visão Computacional</h3>
+          <p>Aprenda a criar soluções de IA para imagens e vídeos.</p>
+          <span>R$ 149,99</span>
+          <a class="button" href="#" target="_blank">Inscreva-se aqui</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experimente IA -->
+    <section id="experimente">
+      <h2>Experimente IA</h2>
+      <div class="modelos">
+        <div class="modelo">
+          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Chatbot IA">
+          <h3>Chatbot IA</h3>
+          <p>Converse com nosso assistente inteligente e tire dúvidas em tempo real.</p>
+          <a class="button" href="#" target="_blank">Testar Chatbot</a>
+        </div>
+        <div class="modelo">
+          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Geração de Texto">
+          <h3>Geração de Texto</h3>
+          <p>Experimente gerar textos automáticos com IA.</p>
+          <a class="button" href="#" target="_blank">Experimentar</a>
+        </div>
+        <div class="modelo">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Análise de Sentimento">
+          <h3>Análise de Sentimento</h3>
+          <p>Veja como a IA interpreta emoções em textos.</p>
+          <a class="button" href="#" target="_blank">Experimentar</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog -->
+    <section id="blog">
+      <h2>Blog</h2>
+      <div class="modelos">
+        <div class="modelo">
+          <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b41?auto=format&fit=crop&w=400&q=80" alt="Tema Blog 1">
+          <h3>O Futuro da IA</h3>
+          <p>Descubra tendências e previsões para a inteligência artificial.</p>
+          <a class="button" href="#">Leia mais</a>
+        </div>
+        <div class="modelo">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Tema Blog 2">
+          <h3>IA no Cotidiano</h3>
+          <p>Como a IA já está presente na sua rotina sem você perceber.</p>
+          <a class="button" href="#">Leia mais</a>
+        </div>
+        <div class="modelo">
+          <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=400&q=80" alt="Tema Blog 3">
+          <h3>Ética em IA</h3>
+          <p>Os desafios e responsabilidades do uso ético da inteligência artificial.</p>
+          <a class="button" href="#">Leia mais</a>
+        </div>
+        <div class="modelo">
+          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Tema Blog 4">
+          <h3>Ferramentas Open Source</h3>
+          <p>Conheça as principais ferramentas de IA de código aberto.</p>
+          <a class="button" href="#">Leia mais</a>
+        </div>
+        <div class="modelo">
+          <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=400&q=80" alt="Tema Blog 5">
+          <h3>IA e Mercado de Trabalho</h3>
+          <p>O impacto da inteligência artificial nas profissões do futuro.</p>
+          <a class="button" href="#">Leia mais</a>
+        </div>
+        <div class="modelo">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Tema Blog 6">
+          <h3>Como Aprender IA</h3>
+          <p>Dicas e recursos para começar sua jornada em inteligência artificial.</p>
+          <a class="button" href="#">Leia mais</a>
+        </div>
+      </div>
+    </section>
+  </div> <!-- Fim da classe container -->
+
+  <!-- Botão de chat flutuante -->
+  <button id="chat-float" onclick="abrirChat()" title="Tire suas dúvidas!" style="
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background: linear-gradient(90deg, #00E5FF 0%, #F50057 50%, #D500F9 100%);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    box-shadow: 0 4px 16px #0005;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  ">
+    💬
+  </button>
+  <script>
+    function abrirChat() {
+      alert('Aqui abriria o chat de dúvidas!');
+      // Substitua por integração real de chat se desejar
+    }
+  </script>
+
+  <!-- RODAPÉ -->
+  <footer style="width:100%; background:#181818; color:#f8f9fa; text-align:center; padding:32px 0 16px 0; margin-top:48px; font-size:1rem;">
+    <div style="margin-bottom:8px;">
+      &copy; 2025 Five Codes Store. Todos os direitos reservados.
+    </div>
+    <div>
+      <a href="mailto:contato@fivecodes.com" style="color:#00E5FF; text-decoration:none;">contato@fivecodes.com</a>
+    </div>
+  </footer>
+</body>
+</html>
