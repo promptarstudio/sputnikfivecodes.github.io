@@ -1,11 +1,15 @@
-<!-- Sugestão de estrutura HTML para Five Codes Store -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Five Codes Store</title>
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Five Codes Store - Versão Completa</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap" rel="stylesheet">
   <style>
+    /* --- CONFIGURAÇÕES GERAIS --- */
+    :root {
+      scroll-behavior: smooth;
+    }
     body {
       background: #121212;
       color: #f8f9fa;
@@ -13,29 +17,42 @@
       margin: 0;
       padding: 0;
     }
-    header {
-      background: linear-gradient(90deg, #00E5FF 0%, #F50057 50%, #D500F9 100%);
-      padding: 40px 0;
-      text-align: center;
+
+    /* --- CONTAINER PRINCIPAL --- */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
     }
-    h1 {
-      color: #212529;
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    section {
-      margin: 40px auto;
-      max-width: 900px;
+
+    /* --- SEÇÕES DE CONTEÚDO --- */
+    .main-section {
+      margin: 40px 0;
       padding: 24px;
       background: #181818;
       border-radius: 12px;
       box-shadow: 0 2px 8px #0002;
+      scroll-margin-top: 72px; 
     }
+
     h2 {
-      color: #FF8FA3;
+      color: #00E5FF; 
       margin-top: 0;
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
     }
-    a.button {
+
+    h3 {
+      font-size: 1.2rem;
+      margin-top: 0;
+      margin-bottom: 1.2em;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    /* --- BOTÕES --- */
+    .button {
       display: inline-block;
       background: linear-gradient(90deg, #00E5FF 0%, #F50057 50%, #D500F9 100%);
       color: #fff;
@@ -44,365 +61,372 @@
       text-decoration: none;
       font-weight: bold;
       margin: 8px 0;
-      transition: opacity 0.2s;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
     }
-    a.button:hover {
-      opacity: 0.8;
+
+    .button:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     }
-    .categorias, .cursos, .modelos {
+    
+    /* --- ESTRUTURA DOS CARDS --- */
+    .cards-wrapper {
       display: flex;
       flex-wrap: wrap;
       gap: 24px;
       justify-content: center;
     }
-    .categoria, .curso, .modelo, .proposta-card {
+    .card {
       flex: 0 1 320px;
       background: #23232b;
       border-radius: 18px;
-      padding: 32px 28px;
-      margin-bottom: 24px;
+      padding: 24px;
+      text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18), 0 1.5px 8px 0 rgba(0,0,0,0.10);
+      box-shadow: 0 8px 32px 0 rgba(0,0,0,0.1), 0 1.5px 8px 0 rgba(0,0,0,0.05);
       transition: box-shadow 0.3s, transform 0.3s;
     }
-    .categoria:hover, .curso:hover, .modelo:hover, .proposta-card:hover {
-      box-shadow: 0 16px 40px 0 rgba(0,0,0,0.28), 0 3px 16px 0 rgba(0,0,0,0.15);
-      transform: translateY(-4px) scale(1.025);
+    .card:hover {
+      box-shadow: 0 16px 40px 0 rgba(0,0,0,0.2), 0 3px 16px 0 rgba(0,0,0,0.1);
+      transform: translateY(-4px) scale(1.02);
     }
-    .categoria img,
-    .curso img,
-    .modelo img,
-    .proposta-img {
+    .card img {
       width: 100%;
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 16 / 9;
       object-fit: cover;
-      object-position: center;
       border-radius: 12px;
       margin-bottom: 18px;
-      box-shadow: 0 2px 12px 0 rgba(0,0,0,0.18);
-      position: relative;
     }
-    .video {
-      margin: 16px 0;
-      text-align: center;
-    }
-    .video iframe {
-      width: 100%;
-      max-width: 100%;
-      height: 260px;
-      border-radius: 8px;
-      object-fit: cover;
-      object-position: top;
-    }
-    textarea {
-      width: 100%;
-      min-height: 70px;
-      border-radius: 10px;
-      border: 1.5px solid #333;
-      background: #18181f;
+     .card h3 {
       color: #f8f9fa;
-      padding: 14px;
-      margin-top: 12px;
-      box-sizing: border-box;
-      resize: vertical;
-      font-size: 1rem;
-      transition: border 0.2s;
     }
-    textarea:focus {
-      outline: none;
-      border: 1.5px solid #00E5FF;
-      background: #23232b;
-    }
-    .proposta-textos {
-      width: 100%;
-      padding: 0 8px;
-      box-sizing: border-box;
-    }
-    .proposta-textos h2 {
-      color: #00E5FF;
-      font-size: 2.1rem;
-      margin-bottom: 0.3em;
-      font-weight: 900;
-      letter-spacing: 0.04em;
-    }
-    .proposta-textos h3 {
-      color: #F50057;
-      font-size: 1.2rem;
-      margin-top: 0;
-      margin-bottom: 1.2em;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-    }
-    .proposta-textos p {
-      font-size: 1.15rem;
-      color: #f8f9fa;
-      margin-bottom: 1.5em;
-      line-height: 1.6;
-    }
-    @media (max-width: 700px) {
-      .categorias, .cursos, .modelos { flex-direction: column; }
-    }
-    @media (max-width: 900px) {
-      .categorias, .cursos, .modelos { flex-direction: column; align-items: center; }
-      .sessao-cards { flex-direction: column; align-items: center; }
-      .mini-card { width: 100%; max-width: 100%; }
-    }
-    /* Estilos adicionais para a classe container */
-    .container {
-      max-width: 1320px;
-      margin: 0 auto;
-      padding: 0 16px;
-    }
-    .sessao-card {
+    
+    /* --- SEÇÃO PROPOSTA (Mini Cards) --- */
+    .proposta-card-section {
       background: #18181f;
       border-radius: 20px;
-      box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18), 0 1.5px 8px 0 rgba(0,0,0,0.10);
-      padding: 28px 18px 24px 18px;
+      padding: 28px;
       margin-bottom: 40px;
     }
-    .sessao-cards {
+
+    .proposta-cards-container {
       display: flex;
-      gap: 16px;
+      gap: 24px;
       justify-content: center;
+      flex-wrap: wrap;
     }
+
     .mini-card {
       background: #23232b;
       border-radius: 14px;
-      padding: 20px 14px;
-      flex: 1 1 0;
-      min-width: 0;
-      max-width: 100%;
+      padding: 24px;
+      flex: 1;
+      min-width: 280px;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      box-shadow: 0 4px 16px 0 rgba(0,0,0,0.13);
+    }
+
+    .mini-card h3 { color: #F50057; font-size: 1.5rem; }
+    .mini-card h4 { color: #00E5FF; font-size: 1.1rem; margin-top: 0; margin-bottom: 8px;}
+    .mini-card p { font-size: 1rem; line-height: 1.6; margin: 0;}
+
+    /* --- PÁGINAS DINÂMICAS (CURSO E BLOG) --- */
+    .dynamic-page { display: none; }
+    .course-content-layout { display: flex; gap: 32px; flex-wrap: wrap;}
+    .course-video-wrapper { flex: 2; min-width: 300px; }
+    .course-video-wrapper video { width: 100%; border-radius: 12px; }
+    .course-info-wrapper { flex: 1; min-width: 300px; }
+    .course-info-wrapper h3 { color: #00E5FF; font-size: 1.8rem; }
+    .module-list { list-style: none; padding: 0; }
+    .module-list li { background: #23232b; padding: 12px 16px; margin-bottom: 8px; border-radius: 8px; border-left: 3px solid #00E5FF; }
+
+    /* --- PÁGINA DE POST DO BLOG --- */
+    #blog-post-page .post-header-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-bottom: 24px;
+    }
+    #blog-post-page .post-content {
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.8;
+        font-size: 1.1rem;
+    }
+    #blog-post-page .post-content p { margin-bottom: 1.5em; }
+    #blog-post-page .post-content h3 { color: #00E5FF; font-size: 1.6rem; margin-top: 2em; }
+
+
+    /* --- PLAYGROUND DE IA --- */
+    .playground-container {
+      background-color: #23232b;
+      padding: 24px;
+      border-radius: 12px;
+    }
+    .playground-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid #333;
+      flex-wrap: wrap;
+    }
+    .tab-button {
+      padding: 10px 20px;
+      background: transparent;
+      border: none;
+      color: #aaa;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s;
+    }
+    .tab-button.active {
+      color: #00E5FF;
+      border-bottom: 3px solid #00E5FF;
+    }
+    .playground-content {
+      display: none;
+    }
+    .playground-content.active {
+      display: block;
+    }
+    .playground-content textarea {
+      width: 100%;
+      min-height: 100px;
+      background-color: #181818;
+      border: 1px solid #333;
+      border-radius: 8px;
+      color: #f8f9fa;
+      padding: 12px;
+      font-size: 1rem;
+      box-sizing: border-box;
+      resize: vertical;
+    }
+    .playground-output {
+      margin-top: 24px;
+      padding: 24px;
+      background-color: #181818;
+      border-radius: 8px;
+      min-height: 100px;
+      white-space: pre-wrap;
+      color: #ddd;
+    }
+    .playground-output img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+    .loading-spinner {
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #F50057;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin: 20px auto;
+    }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    /* --- ESTILOS DO MENU DE NAVEGAÇÃO --- */
+    .nav-link {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700; /* Montserrat Bold */
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover {
+      color: #00E5FF; /* Azul da marca no hover */
     }
   </style>
 </head>
 <body>
-  <!-- MENU FIXO NO TOPO -->
-  <nav style="width:100%; background:#181818; color:#fff; padding:0 32px; height:56px; display:flex; align-items:center; justify-content:space-between; position:fixed; top:0; left:0; z-index:10000; box-shadow:0 2px 8px #0002;">
-    <span style="font-weight:900; letter-spacing:0.1em; font-family:'Montserrat',sans-serif;">FIVE CODES</span>
-    <ul style="display:flex; gap:24px; list-style:none; margin:0; padding:0;">
-      <li><a href="#proposta" style="color:#fff; text-decoration:none; font-weight:bold;">Proposta</a></li>
-      <li><a href="#produtos" style="color:#fff; text-decoration:none; font-weight:bold;">Produtos</a></li>
-      <li><a href="#cursos" style="color:#fff; text-decoration:none; font-weight:bold;">Cursos</a></li>
-      <li><a href="#experimente" style="color:#fff; text-decoration:none; font-weight:bold;">Experimente IA</a></li>
-      <li><a href="#blog" style="color:#fff; text-decoration:none; font-weight:bold;">Blog</a></li>
-    </ul>
+
+  <!-- Menu e Espaçador -->
+  <nav style="width:100%; background:#181818; color:#fff; position:fixed; top:0; left:0; z-index:10000; box-shadow:0 2px 8px #0002;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px; height:56px; display:flex; align-items:center; justify-content:space-between;">
+        <span style="font-weight:900; letter-spacing:0.1em; font-family:'Montserrat',sans-serif;">FIVE CODES</span>
+        <ul style="display:flex; gap:24px; list-style:none; margin:0; padding:0;">
+          <li><a href="#proposta" class="nav-link">Proposta</a></li>
+          <li><a href="#produtos" class="nav-link">Produtos</a></li>
+          <li><a href="#cursos" class="nav-link">Cursos</a></li>
+          <li><a href="#experimente" class="nav-link">Playground</a></li>
+          <li><a href="#blog" class="nav-link">Blog</a></li>
+        </ul>
+    </div>
   </nav>
-  <div style="height:56px;"></div> <!-- Espaço para o menu fixo não sobrepor o conteúdo -->
+  <div style="height:56px;"></div>
 
-  <!-- HERO VIDEO EM LOOP COM TEXTO DESTACADO -->
-  <div style="position:relative; width:100%; height:320px; display:flex; align-items:center; justify-content:center; overflow:hidden; margin-bottom:32px;">
-    <video autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover; object-position:center; filter:brightness(0.7);">
-      <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
-      Seu navegador não suporta vídeo em HTML5.
-    </video>
-    <span style="
-      position:absolute;
-      top:50%;
-      left:50%;
-      transform:translate(-50%,-50%);
-      color:#212529;
-      font-size:3rem;
-      font-weight:900;
-      font-family:'Montserrat',sans-serif;
-      letter-spacing:0.15em;
-      text-transform:uppercase;
-      text-align:center;
-      ">
-      FIVE CODES STORE
-    </span>
+  <div id="main-content">
+      <!-- HERO VIDEO - AGORA COM SEU VÍDEO LOCAL -->
+      <div style="position:relative; width:100%; height:320px; display:flex; align-items:center; justify-content:center; overflow:hidden; margin-bottom: 24px;">
+        <video autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover; object-position:center; filter:brightness(0.6);">
+          <!-- AQUI ESTÁ A MUDANÇA -->
+          <source src="hero_fivecodes.mp4" type="video/mp4">
+          Seu navegador não suporta vídeo em HTML5.
+        </video>
+        <span style="position:absolute; color:#fff; font-size:clamp(1.5rem, 5vw, 3rem); font-weight:900; letter-spacing:0.15em; text-transform:uppercase; text-align:center; padding: 0 16px;">
+          FIVE CODES STORE
+        </span>
+      </div>
+
+      <!-- CONTAINER GERAL -->
+      <div class="container">
+        
+        <!-- Seção de proposta -->
+        <section id="proposta" class="main-section proposta-card-section">
+            <h2>Nossa Proposta</h2>
+            <div class="proposta-cards-container">
+              <div class="mini-card">
+                <h3>Nossa Missão</h3>
+                <h4>Democratizar a IA</h4>
+                <p>Tornar o acesso à Inteligência Artificial simples, acessível e prático para todos os públicos.</p>
+              </div>
+              <div class="mini-card">
+                <h3>Educação & Inovação</h3>
+                <h4>Conteúdo de Qualidade</h4>
+                <p>Oferecemos cursos, exemplos práticos e materiais didáticos para impulsionar seu aprendizado.</p>
+              </div>
+              <div class="mini-card">
+                <h3>Tecnologia de Ponta</h3>
+                <h4>Infraestrutura Moderna</h4>
+                <p>Produtos, servidores e modelos de IA atualizados para você experimentar e inovar com confiança.</p>
+              </div>
+            </div>
+        </section>
+
+        <!-- Produtos -->
+        <section id="produtos" class="main-section">
+          <h2>Produtos em Destaque</h2>
+          <div class="cards-wrapper">
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Modelo de Tradução">
+              <h3>Modelo de Tradução</h3>
+              <p>Modelo de IA para tradução de textos.</p>
+              <a class="button" href="https://huggingface.co/transformers/model1" target="_blank">Ver modelo</a>
+            </div>
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Modelo de Classificação de Texto">
+              <h3>Classificação de Texto</h3>
+              <p>Modelo de IA para classificação de textos.</p>
+              <a class="button" href="https://huggingface.co/transformers/model2" target="_blank">Ver modelo</a>
+            </div>
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Modelo de Resumo de Texto">
+              <h3>Resumo de Texto</h3>
+              <p>Modelo de IA para resumir textos automaticamente.</p>
+              <a class="button" href="#" target="_blank">Ver modelo</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Cursos -->
+        <section id="cursos" class="main-section">
+          <h2>Cursos</h2>
+          <div class="cards-wrapper">
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Introdução à Inteligência Artificial">
+              <h3>Introdução à IA</h3>
+              <p>Um curso introdutório sobre os conceitos básicos de IA.</p>
+              <span>R$ 99,99</span>
+              <button class="button" onclick="showCoursePage('intro-ia')">Ver Curso</button>
+            </div>
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=400&q=80" alt="Aprendizado de Máquina Avançado">
+              <h3>Machine Learning Avançado</h3>
+              <p>Um curso avançado sobre técnicas de aprendizado de máquina.</p>
+              <span>R$ 199,99</span>
+              <button class="button" onclick="showCoursePage('ml-avancado')">Ver Curso</button>
+            </div>
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Curso de Visão Computacional">
+              <h3>Visão Computacional</h3>
+              <p>Aprenda a criar soluções de IA para imagens e vídeos.</p>
+              <span>R$ 149,99</span>
+              <button class="button" onclick="showCoursePage('visao-comp')">Ver Curso</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Playground de IA -->
+        <section id="experimente" class="main-section">
+            <h2>IA Playground</h2>
+            <div class="playground-container">
+                <div class="playground-tabs">
+                    <button class="tab-button active" onclick="openPlayground(event, 'text-gen')">Gerador de Texto</button>
+                    <button class="tab-button" onclick="openPlayground(event, 'image-gen')">Gerador de Imagens</button>
+                    <button class="tab-button" onclick="openPlayground(event, 'sentiment')">Análise de Sentimento</button>
+                </div>
+
+                <div id="text-gen" class="playground-content active">
+                    <p>Peça qualquer coisa para a IA. Slogans, ideias, código, poemas...</p>
+                    <textarea id="text-prompt" placeholder="Ex: Crie um slogan para uma marca de tênis futurista"></textarea>
+                    <button class="button" onclick="handleApiCall('text')">Gerar Texto</button>
+                    <div id="text-output" class="playground-output">A resposta da IA aparecerá aqui...</div>
+                </div>
+
+                <div id="image-gen" class="playground-content">
+                    <p>Descreva em detalhes a imagem que você quer criar.</p>
+                    <textarea id="image-prompt" placeholder="Ex: Um astronauta surfando em um anel de Saturno, arte digital"></textarea>
+                    <button class="button" onclick="handleApiCall('image')">Gerar Imagem</button>
+                    <div id="image-output" class="playground-output">Sua imagem aparecerá aqui...</div>
+                </div>
+
+                <div id="sentiment" class="playground-content">
+                    <p>Cole um texto e a IA dirá se o sentimento é positivo, negativo ou neutro.</p>
+                    <textarea id="sentiment-prompt" placeholder="Ex: Eu amei o filme novo, os efeitos especiais foram incríveis!"></textarea>
+                    <button class="button" onclick="handleApiCall('sentiment')">Analisar Texto</button>
+                    <div id="sentiment-output" class="playground-output">O resultado da análise aparecerá aqui...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog -->
+        <section id="blog" class="main-section">
+            <h2>Blog</h2>
+            <div class="cards-wrapper">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b41?auto=format&fit=crop&w=400&q=80" alt="Tema Blog 1">
+                    <h3>O Futuro da IA</h3>
+                    <p>Descubra tendências e previsões para a inteligência artificial.</p>
+                    <button class="button" onclick="showPostPage('post-1')">Leia mais</button>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Tema Blog 2">
+                    <h3>IA no Cotidiano</h3>
+                    <p>Como a IA já está presente na sua rotina sem você perceber.</p>
+                    <button class="button" onclick="showPostPage('post-2')">Leia mais</button>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=400&q=80" alt="Tema Blog 3">
+                    <h3>Ética em IA</h3>
+                    <p>Os desafios e responsabilidades do uso ético da IA.</p>
+                    <button class="button" onclick="showPostPage('post-3')">Leia mais</button>
+                </div>
+            </div>
+        </section>
+      </div>
   </div>
 
-  <!-- Imagem de topo (logo ou destaque) -->
-  <div style="width:100%; display:flex; justify-content:center; align-items:center; margin-top:32px;">
-    <img src="https://via.placeholder.com/220x80?text=LOGO+OU+DESTAQUE" alt="Logo Five Codes Store" style="max-width:220px; height:auto;">
-  </div>
-
-  <!-- Adicione uma classe container para centralizar e limitar a largura -->
+  <!-- PÁGINAS DINÂMICAS (COMEÇAM ESCONDIDAS) -->
   <div class="container">
-    <!-- Seção de proposta -->
-    <section id="proposta" style="margin-top:32px;">
-      <div class="sessao-card">
-        <div class="sessao-titulo">
-          <h2>Nossa Proposta</h2>
-        </div>
-        <div class="sessao-cards">
-          <div class="mini-card">
-            <h3>Nossa Missão</h3>
-            <h4>Democratizar a Inteligência Artificial</h4>
-            <p>Tornar o acesso à IA simples, acessível e prático para todos os públicos, do iniciante ao avançado.</p>
-          </div>
-          <div class="mini-card">
-            <h3>Educação & Inovação</h3>
-            <h4>Conteúdo de Qualidade</h4>
-            <p>Oferecemos cursos, exemplos práticos e materiais didáticos para impulsionar seu aprendizado em IA.</p>
-          </div>
-          <div class="mini-card">
-            <h3>Tecnologia de Ponta</h3>
-            <h4>Infraestrutura Moderna</h4>
-            <p>Produtos, servidores e modelos de IA atualizados para você experimentar e inovar com confiança.</p>
-          </div>
-        </div>
-      </div>
+    <section id="course-detail-page" class="main-section dynamic-page">
+      <!-- Conteúdo do curso preenchido via JS -->
     </section>
-
-    <!-- Modelos de IA (Produtos) -->
-    <section id="produtos">
-      <h2>Produtos em Destaque</h2>
-      <div class="modelos">
-        <div class="modelo">
-          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Modelo de Tradução">
-          <h3>Modelo de Tradução</h3>
-          <p>Modelo de IA para tradução de textos.</p>
-          <a class="button" href="https://huggingface.co/transformers/model1" target="_blank">Ver modelo</a>
-        </div>
-        <div class="modelo">
-          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Modelo de Classificação de Texto">
-          <h3>Modelo de Classificação de Texto</h3>
-          <p>Modelo de IA para classificação de textos.</p>
-          <a class="button" href="https://huggingface.co/transformers/model2" target="_blank">Ver modelo</a>
-        </div>
-        <div class="modelo">
-          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Modelo de Resumo de Texto">
-          <h3>Modelo de Resumo de Texto</h3>
-          <p>Modelo de IA para resumir textos automaticamente.</p>
-          <a class="button" href="#" target="_blank">Ver modelo</a>
-        </div>
-      </div>
+    <section id="blog-post-page" class="main-section dynamic-page">
+      <!-- Conteúdo do post preenchido via JS -->
     </section>
-
-    <!-- Cursos -->
-    <section id="cursos">
-      <h2>Cursos</h2>
-      <div class="cursos">
-        <div class="curso">
-          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Introdução à Inteligência Artificial">
-          <h3>Introdução à Inteligência Artificial</h3>
-          <p>Um curso introdutório sobre os conceitos básicos de IA.</p>
-          <span>R$ 99,99</span>
-          <a class="button" href="https://afiliado.com/curso001" target="_blank">Inscreva-se aqui</a>
-        </div>
-        <div class="curso">
-          <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=400&q=80" alt="Aprendizado de Máquina Avançado">
-          <h3>Aprendizado de Máquina Avançado</h3>
-          <p>Um curso avançado sobre técnicas de aprendizado de máquina.</p>
-          <span>R$ 199,99</span>
-          <a class="button" href="https://afiliado.com/curso002" target="_blank">Inscreva-se aqui</a>
-        </div>
-        <div class="curso">
-          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Curso de Visão Computacional">
-          <h3>Curso de Visão Computacional</h3>
-          <p>Aprenda a criar soluções de IA para imagens e vídeos.</p>
-          <span>R$ 149,99</span>
-          <a class="button" href="#" target="_blank">Inscreva-se aqui</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experimente IA -->
-    <section id="experimente">
-      <h2>Experimente IA</h2>
-      <div class="modelos">
-        <div class="modelo">
-          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Chatbot IA">
-          <h3>Chatbot IA</h3>
-          <p>Converse com nosso assistente inteligente e tire dúvidas em tempo real.</p>
-          <a class="button" href="#" target="_blank">Testar Chatbot</a>
-        </div>
-        <div class="modelo">
-          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Geração de Texto">
-          <h3>Geração de Texto</h3>
-          <p>Experimente gerar textos automáticos com IA.</p>
-          <a class="button" href="#" target="_blank">Experimentar</a>
-        </div>
-        <div class="modelo">
-          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Análise de Sentimento">
-          <h3>Análise de Sentimento</h3>
-          <p>Veja como a IA interpreta emoções em textos.</p>
-          <a class="button" href="#" target="_blank">Experimentar</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Blog -->
-    <section id="blog">
-      <h2>Blog</h2>
-      <div class="modelos">
-        <div class="modelo">
-          <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b41?auto=format&fit=crop&w=400&q=80" alt="Tema Blog 1">
-          <h3>O Futuro da IA</h3>
-          <p>Descubra tendências e previsões para a inteligência artificial.</p>
-          <a class="button" href="#">Leia mais</a>
-        </div>
-        <div class="modelo">
-          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Tema Blog 2">
-          <h3>IA no Cotidiano</h3>
-          <p>Como a IA já está presente na sua rotina sem você perceber.</p>
-          <a class="button" href="#">Leia mais</a>
-        </div>
-        <div class="modelo">
-          <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=400&q=80" alt="Tema Blog 3">
-          <h3>Ética em IA</h3>
-          <p>Os desafios e responsabilidades do uso ético da inteligência artificial.</p>
-          <a class="button" href="#">Leia mais</a>
-        </div>
-        <div class="modelo">
-          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Tema Blog 4">
-          <h3>Ferramentas Open Source</h3>
-          <p>Conheça as principais ferramentas de IA de código aberto.</p>
-          <a class="button" href="#">Leia mais</a>
-        </div>
-        <div class="modelo">
-          <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=400&q=80" alt="Tema Blog 5">
-          <h3>IA e Mercado de Trabalho</h3>
-          <p>O impacto da inteligência artificial nas profissões do futuro.</p>
-          <a class="button" href="#">Leia mais</a>
-        </div>
-        <div class="modelo">
-          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Tema Blog 6">
-          <h3>Como Aprender IA</h3>
-          <p>Dicas e recursos para começar sua jornada em inteligência artificial.</p>
-          <a class="button" href="#">Leia mais</a>
-        </div>
-      </div>
-    </section>
-  </div> <!-- Fim da classe container -->
-
-  <!-- Botão de chat flutuante -->
-  <button id="chat-float" onclick="abrirChat()" title="Tire suas dúvidas!" style="
-    position: fixed;
-    bottom: 32px;
-    right: 32px;
-    background: linear-gradient(90deg, #00E5FF 0%, #F50057 50%, #D500F9 100%);
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 64px;
-    height: 64px;
-    box-shadow: 0 4px 16px #0005;
-    font-size: 2rem;
-    cursor: pointer;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  ">
-    💬
-  </button>
-  <script>
-    function abrirChat() {
-      alert('Aqui abriria o chat de dúvidas!');
-      // Substitua por integração real de chat se desejar
-    }
-  </script>
-
-  <!-- RODAPÉ -->
-  <footer style="width:100%; background:#181818; color:#f8f9fa; text-align:center; padding:32px 0 16px 0; margin-top:48px; font-size:1rem;">
+  </div>
+  
+  <footer id="footer">
     <div style="margin-bottom:8px;">
       &copy; 2025 Five Codes Store. Todos os direitos reservados.
     </div>
@@ -410,5 +434,195 @@
       <a href="mailto:contato@fivecodes.com" style="color:#00E5FF; text-decoration:none;">contato@fivecodes.com</a>
     </div>
   </footer>
+
+  <script>
+    // --- BANCO DE DADOS FAKE (CONTEÚDO) ---
+    const coursesData = {
+      'intro-ia': {
+        title: 'Introdução à Inteligência Artificial',
+        videoUrl: 'https://www.w3schools.com/html/mov_bbb.mp4',
+        description: 'Neste curso você aprenderá os fundamentos essenciais da IA, desde os conceitos básicos de Machine Learning até as aplicações práticas que estão transformando o mundo. Perfeito para iniciantes.',
+        price: 'R$ 99,99',
+        paymentLink: 'https://pag.ae/7Y_xYzKqP',
+        modules: [ 'Módulo 1: O que é IA?', 'Módulo 2: Tipos de Machine Learning', 'Módulo 3: Redes Neurais 101', 'Módulo 4: Projeto Prático - Seu primeiro modelo' ]
+      },
+      'ml-avancado': {
+        title: 'Machine Learning Avançado',
+        videoUrl: 'https://www.w3schools.com/html/mov_bbb.mp4',
+        description: 'Aprofunde seus conhecimentos com algoritmos complexos, técnicas de otimização e projetos de nível profissional. Para quem já tem uma base e quer ir além.',
+        price: 'R$ 199,99',
+        paymentLink: 'https://pag.ae/7Z_exemplo2',
+        modules: [ 'Módulo 1: Deep Learning', 'Módulo 2: Processamento de Linguagem Natural', 'Módulo 3: Deploy de Modelos em Produção', 'Módulo 4: Projeto Final - Sistema de Recomendação' ]
+      },
+      'visao-comp': {
+        title: 'Visão Computacional com Python',
+        videoUrl: 'https://www.w3schools.com/html/mov_bbb.mp4',
+        description: 'Aprenda a fazer com que máquinas "vejam". Trabalharemos com detecção de objetos, reconhecimento facial e análise de imagens usando bibliotecas como OpenCV e TensorFlow.',
+        price: 'R$ 149,99',
+        paymentLink: 'https://pag.ae/7Z_exemplo3',
+        modules: [ 'Módulo 1: Fundamentos de Imagens Digitais', 'Módulo 2: OpenCV na Prática', 'Módulo 3: Detecção e Segmentação', 'Módulo 4: Projeto Prático - Câmera de Segurança Inteligente' ]
+      }
+    };
+    const postsData = {
+        'post-1': {
+            title: 'O Futuro da Inteligência Artificial',
+            image: 'https://images.unsplash.com/photo-1465101178521-c1a9136a3b41?auto=format&fit=crop&w=1200&q=80',
+            content: `
+                <p>A inteligência artificial deixou de ser um conceito de ficção científica para se tornar uma força motriz no nosso dia a dia. Mas o que o futuro realmente reserva? Estamos à beira de uma nova revolução industrial, onde a IA não será apenas uma ferramenta, mas uma parceira criativa e analítica.</p>
+                <h3>IA Generativa e Criatividade</h3>
+                <p>Modelos como o que você acabou de usar no nosso Playground estão redefinindo os limites da criatividade. Eles podem compor músicas, escrever roteiros, criar artes visuais e até mesmo gerar códigos funcionais. O futuro não é sobre a IA substituir os humanos, mas sobre amplificar nossa capacidade criativa. O artista com uma IA é mais rápido e versátil do que o artista sem ela.</p>
+                <h3>Impacto no Mercado de Trabalho</h3>
+                <p>Haverá uma mudança sísmica. Tarefas repetitivas e analíticas serão cada vez mais automatizadas. No entanto, novas profissões surgirão: curadores de IA, especialistas em ética de algoritmos, treinadores de modelos de linguagem e engenheiros de prompt. A habilidade mais importante do futuro será saber como fazer as perguntas certas para a IA.</p>
+            `
+        },
+        'post-2': {
+            title: 'IA no Cotidiano: Onde Ela Já Está?',
+            image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80',
+            content: '<p>Conteúdo do post 2 sobre IA no cotidiano...</p>'
+        },
+        'post-3': {
+            title: 'Os Desafios da Ética em IA',
+            image: 'https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=1200&q=80',
+            content: '<p>Conteúdo do post 3 sobre ética em IA...</p>'
+        }
+    };
+
+
+    // --- CONTROLE DE VISUALIZAÇÃO DAS PÁGINAS ---
+    const mainContent = document.getElementById('main-content');
+    const courseDetailPage = document.getElementById('course-detail-page');
+    const blogPostPage = document.getElementById('blog-post-page');
+
+    function showCoursePage(courseId) {
+      const course = coursesData[courseId];
+      if (!course) return;
+      mainContent.style.display = 'none';
+      courseDetailPage.innerHTML = `
+        <button class="button" onclick="hideCoursePage()">← Voltar para todos os cursos</button>
+        <h2 style="margin-top: 24px;">${course.title}</h2>
+        <div class="course-content-layout">
+          <div class="course-video-wrapper">
+            <video controls><source src="${course.videoUrl}" type="video/mp4"></video>
+            <p>${course.description}</p>
+          </div>
+          <div class="course-info-wrapper">
+            <h3>Módulos do Curso</h3>
+            <ul class="module-list">
+              ${course.modules.map(module => `<li>${module}</li>`).join('')}
+            </ul>
+            <h3>Investimento</h3>
+            <p style="font-size: 1.8rem; font-weight: bold; color: #00E5FF;">${course.price}</p>
+            <a href="${course.paymentLink}" target="_blank" class="button" style="width: 100%; text-align: center;">COMPRAR AGORA</a>
+          </div>
+        </div>
+      `;
+      courseDetailPage.style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+    function hideCoursePage() {
+      courseDetailPage.style.display = 'none';
+      courseDetailPage.innerHTML = '';
+      mainContent.style.display = 'block';
+    }
+    
+    function showPostPage(postId) {
+        const post = postsData[postId];
+        if (!post) return;
+        mainContent.style.display = 'none';
+        blogPostPage.innerHTML = `
+            <button class="button" onclick="hidePostPage()">← Voltar para o blog</button>
+            <h2 style="margin-top: 24px;">${post.title}</h2>
+            <img src="${post.image}" alt="${post.title}" class="post-header-image">
+            <div class="post-content">${post.content}</div>
+        `;
+        blogPostPage.style.display = 'block';
+        window.scrollTo(0, 0);
+    }
+
+    function hidePostPage() {
+        blogPostPage.style.display = 'none';
+        blogPostPage.innerHTML = '';
+        mainContent.style.display = 'block';
+    }
+
+
+    // --- LÓGICA DO PLAYGROUND DE IA ---
+    function openPlayground(event, playgroundName) {
+      let i, playgroundContent, tabButtons;
+      playgroundContent = document.getElementsByClassName("playground-content");
+      for (i = 0; i < playgroundContent.length; i++) {
+        playgroundContent[i].style.display = "none";
+      }
+      tabButtons = document.getElementsByClassName("tab-button");
+      for (i = 0; i < tabButtons.length; i++) {
+        tabButtons[i].className = tabButtons[i].className.replace(" active", "");
+      }
+      document.getElementById(playgroundName).style.display = "block";
+      event.currentTarget.className += " active";
+    }
+
+    async function handleApiCall(type) {
+      const apiKey = ""; 
+      let prompt, outputElement, modelUrl, payload;
+      const showLoading = (element) => {
+          element.innerHTML = '<div class="loading-spinner"></div>';
+      };
+
+      try {
+        switch (type) {
+          case 'text':
+            prompt = document.getElementById('text-prompt').value;
+            outputElement = document.getElementById('text-output');
+            showLoading(outputElement);
+            modelUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+            payload = { contents: [{ parts: [{ text: prompt }] }] };
+            const textResponse = await fetch(modelUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+            if (!textResponse.ok) throw new Error(`Erro na API: ${textResponse.statusText}`);
+            const textResult = await textResponse.json();
+            if (textResult.candidates && textResult.candidates[0].content.parts[0].text) {
+                outputElement.innerText = textResult.candidates[0].content.parts[0].text;
+            } else { throw new Error('Resposta da API em formato inesperado.'); }
+            break;
+
+          case 'image':
+            prompt = document.getElementById('image-prompt').value;
+            outputElement = document.getElementById('image-output');
+            showLoading(outputElement);
+            modelUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${apiKey}`;
+            payload = { instances: [{ prompt: prompt }], parameters: { "sampleCount": 1 } };
+            const imageResponse = await fetch(modelUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+            if (!imageResponse.ok) throw new Error(`Erro na API: ${imageResponse.statusText}`);
+            const imageResult = await imageResponse.json();
+            if (imageResult.predictions && imageResult.predictions[0].bytesBase64Encoded) {
+                const imageUrl = `data:image/png;base64,${imageResult.predictions[0].bytesBase64Encoded}`;
+                outputElement.innerHTML = `<img src="${imageUrl}" alt="Imagem gerada por IA">`;
+            } else { throw new Error('Resposta da API em formato inesperado.'); }
+            break;
+
+          case 'sentiment':
+            prompt = document.getElementById('sentiment-prompt').value;
+            outputElement = document.getElementById('sentiment-output');
+            showLoading(outputElement);
+            const sentimentPrompt = `Analise o sentimento do seguinte texto e responda APENAS com uma das três opções: "Positivo", "Negativo" ou "Neutro". Texto: "${prompt}"`;
+            modelUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+            payload = { contents: [{ parts: [{ text: sentimentPrompt }] }] };
+            const sentimentResponse = await fetch(modelUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+            if (!sentimentResponse.ok) throw new Error(`Erro na API: ${sentimentResponse.statusText}`);
+            const sentimentResult = await sentimentResponse.json();
+            if (sentimentResult.candidates && sentimentResult.candidates[0].content.parts[0].text) {
+                outputElement.innerText = `Resultado da Análise: ${sentimentResult.candidates[0].content.parts[0].text}`;
+            } else { throw new Error('Resposta da API em formato inesperado.'); }
+            break;
+        }
+      } catch (error) {
+        console.error('Erro ao chamar a API de IA:', error);
+        const activeOutput = document.querySelector('.playground-content.active .playground-output');
+        if (activeOutput) {
+            activeOutput.innerText = `Ocorreu um erro: ${error.message}. Verifique o console para mais detalhes.`;
+        }
+      }
+    }
+  </script>
+
 </body>
 </html>
