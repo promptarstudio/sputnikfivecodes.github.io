@@ -246,6 +246,117 @@
     .nav-link:hover {
       color: #00E5FF; /* Azul da marca no hover */
     }
+    
+    /* --- ESTILOS DO COMPONENTE STUDIO KIT --- */
+    .studio-kit-section {
+        width: 100%;
+        padding: 80px 0; /* Ajustado o padding para ficar alinhado */
+        background-color: #121212; /* Fundo igual ao body para integrar */
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        text-align: center;
+        box-sizing: border-box;
+        margin: 40px 0; /* Mantém a margem das outras seções */
+    }
+
+    .studio-kit-section h2 {
+        font-size: 2.5rem;
+        font-weight: 900;
+        margin-bottom: 10px;
+    }
+
+    .studio-kit-section .subtitle {
+        font-size: 1.2rem;
+        color: #aaa;
+        max-width: 600px;
+        margin: 0 auto 60px auto;
+        line-height: 1.6;
+    }
+
+    .kit-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .app-card {
+        background-color: #1a1a1a;
+        border: 1px solid #333;
+        border-radius: 16px;
+        padding: 30px;
+        text-align: left;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .app-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .app-card .icon-container {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 20px;
+        color: #ff9800; /* Cor do ícone */
+    }
+
+    .app-card h3 {
+        font-size: 1.5rem;
+        margin: 0 0 15px 0;
+        color: #f8f9fa; /* Garante que o H3 tenha a cor certa */
+    }
+    
+    .app-card .gradient-part {
+        background: linear-gradient(90deg, #ff9800 0%, #ff5eae 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .app-card p {
+        font-family: 'Montserrat', sans-serif;
+        color: #ccc;
+        line-height: 1.7;
+        margin-bottom: 30px;
+        flex-grow: 1; /* Faz o parágrafo ocupar o espaço para alinhar os botões */
+    }
+
+    .app-card .btn-soon {
+        display: inline-block;
+        padding: 12px 25px;
+        border-radius: 8px;
+        background-color: #333;
+        color: #888;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        cursor: not-allowed;
+    }
+
+    /* Seção de CTA para serviços customizados */
+    .custom-cta {
+        margin-top: 100px;
+        padding-top: 60px;
+        border-top: 1px solid #333;
+    }
+
+    .custom-cta h3 {
+        font-size: 2rem;
+    }
+    
+    .custom-cta a {
+        color: #ff9800;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    
+    .custom-cta a:hover {
+        text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -256,6 +367,7 @@
         <span style="font-weight:900; letter-spacing:0.1em; font-family:'Montserrat',sans-serif;">FIVE CODES</span>
         <ul style="display:flex; gap:24px; list-style:none; margin:0; padding:0;">
           <li><a href="#proposta" class="nav-link">Proposta</a></li>
+          <li><a href="#studio-kit" class="nav-link">Studio Kit</a></li> <!-- NOVO LINK NO MENU -->
           <li><a href="#produtos" class="nav-link">Produtos</a></li>
           <li><a href="#cursos" class="nav-link">Cursos</a></li>
           <li><a href="#experimente" class="nav-link">Playground</a></li>
@@ -266,10 +378,9 @@
   <div style="height:56px;"></div>
 
   <div id="main-content">
-      <!-- HERO VIDEO - AGORA COM SEU VÍDEO LOCAL -->
+      <!-- HERO VIDEO -->
       <div style="position:relative; width:100%; height:320px; display:flex; align-items:center; justify-content:center; overflow:hidden; margin-bottom: 24px;">
         <video autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover; object-position:center; filter:brightness(0.6);">
-          <!-- AQUI ESTÁ A MUDANÇA -->
           <source src="hero_fivecodes.mp4" type="video/mp4">
           Seu navegador não suporta vídeo em HTML5.
         </video>
@@ -302,6 +413,60 @@
               </div>
             </div>
         </section>
+
+        <!-- NOVA SEÇÃO DO STUDIO KIT INSERIDA AQUI -->
+        <section id="studio-kit" class="studio-kit-section" style="scroll-margin-top: 72px;">
+            <h2>O Kit de Ferramentas para Criadores.</h2>
+            <p class="subtitle">Micro-apps simples, poderosos e com design impecável, construídos para resolver os problemas reais do seu set de gravação.</p>
+        
+            <div class="kit-grid">
+                <!-- Card do Teleprompter -->
+                <div class="app-card">
+                    <div class="icon-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256"><path d="M208,24H48A24,24,0,0,0,24,48V208a24,24,0,0,0,24,24H208a24,24,0,0,0,24-24V48A24,24,0,0,0,208,24Zm8,184a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V48a8,8,0,0,1,8-8H208a8,8,0,0,1,8,8ZM184,80H72a8,8,0,0,0,0,16H184a8,8,0,0,0,0-16Zm0,32H72a8,8,0,0,0,0,16H184a8,8,0,0,0,0-16Zm0,32H72a8,8,0,0,0,0,16H184a8,8,0,0,0,0-16Z"></path></svg>
+                    </div>
+                    <h3><span class="gradient-part">FiveCodes</span> Teleprompter</h3>
+                    <p>Um teleprompter profissional, leve e offline, com velocidade ajustável e modo espelho. Grave seus roteiros com fluidez em qualquer lugar.</p>
+                    <span class="btn-soon">Em Breve</span>
+                </div>
+        
+                <!-- Card do Relógio de Estúdio -->
+                <div class="app-card">
+                    <div class="icon-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256"><path d="M232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-32,0a72,72,0,1,0-72,72A72.08,72.08,0,0,0,200,128ZM120,72v48a8,8,0,0,0,8,8h48a8,8,0,0,0,0-16H136V72a8,8,0,0,0-16,0Z"></path></svg>
+                    </div>
+                    <h3><span class="gradient-part">FiveCodes</span> Studio Clock</h3>
+                    <p>Um relógio de estúdio 2-em-1 com cronômetro de precisão e timer regressivo com alarme visual. O controle total do seu tempo de produção.</p>
+                    <span class="btn-soon">Em Breve</span>
+                </div>
+        
+                <!-- Card da Claquete Digital -->
+                <div class="app-card">
+                    <div class="icon-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256"><path d="M239.54,65.41l-48-26.67a8,8,0,0,0-8.48,1.48L32.4,142.85a8,8,0,0,0-4,6.76V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V80a8,8,0,0,0-4.46-7.15A7.88,7.88,0,0,0,232,64a8,8,0,0,0-4.46-7.15l-32-17.78,48-26.67a8,8,0,0,0,4-6.76V8A8,8,0,0,0,239.54,6.59ZM216,64l-48,26.67-16-8.89,48-26.67ZM48,152.61,183.1,59.33l16,8.89L64.05,161.41ZM216,200H48V157.39l21.95-12.18L192,106.67,216,120Zm16-120v45.33l-21.95,12.18L88,76.06,192,20.44l35.54,19.75A8,8,0,0,0,232,46.59V8Z"></path></svg>
+                    </div>
+                    <h3><span class="gradient-part">FiveCodes</span> Production Slate</h3>
+                    <p>Uma claquete digital para organizar suas cenas e takes, com contagem regressiva para o "AÇÃO!". A ferramenta perfeita para o diretor no set.</p>
+                    <span class="btn-soon">Em Breve</span>
+                </div>
+                
+                <!-- Card da Calculadora de Mídia -->
+                <div class="app-card">
+                    <div class="icon-container">
+                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256"><path d="M224,48H32a16,16,0,0,0-16,16V192a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48Zm0,16V88H32V64ZM32,192V104H224V192Zm52-56a12,12,0,1,1,12,12A12,12,0,0,1,84,136Zm44,0a12,12,0,1,1,12,12A12,12,0,0,1,128,136Zm44,0a12,12,0,1,1,12,12A12,12,0,0,1,172,136ZM84,176a12,12,0,1,1,12,12A12,12,0,0,1,84,176Zm44,0a12,12,0,1,1,12,12A12,12,0,0,1,128,176Z"></path></svg>
+                    </div>
+                    <h3><span class="gradient-part">FiveCodes</span> Media Calculator</h3>
+                    <p>Calcule o tamanho de arquivos de vídeo e o tempo de transferência com precisão. Uma ferramenta essencial para planejar sua produção.</p>
+                    <span class="btn-soon">Em Breve</span>
+                </div>
+            </div>
+        
+            <div class="custom-cta">
+                <h3>Uma Ferramenta com a Sua Marca?</h3>
+                <p class="subtitle">Além do nosso kit, criamos versões personalizadas das nossas ferramentas para produtoras e empresas. Se você precisa de uma solução com a sua identidade visual, <a href="mailto:contato@promptar.studio">fale com a gente</a>.</p>
+            </div>
+        </section>
+
 
         <!-- Produtos -->
         <section id="produtos" class="main-section">
@@ -425,8 +590,8 @@
       <!-- Conteúdo do post preenchido via JS -->
     </section>
   </div>
-  
-  <footer id="footer">
+ 
+  <footer id="footer" style="background: #181818; padding: 24px; text-align: center; margin-top: 40px;">
     <div style="margin-bottom:8px;">
       &copy; 2025 Five Codes Store. Todos os direitos reservados.
     </div>
@@ -498,7 +663,7 @@
       if (!course) return;
       mainContent.style.display = 'none';
       courseDetailPage.innerHTML = `
-        <button class="button" onclick="hideCoursePage()">← Voltar para todos os cursos</button>
+        <button class="button" onclick="hideDynamicPage('course')">← Voltar para todos os cursos</button>
         <h2 style="margin-top: 24px;">${course.title}</h2>
         <div class="course-content-layout">
           <div class="course-video-wrapper">
@@ -519,18 +684,13 @@
       courseDetailPage.style.display = 'block';
       window.scrollTo(0, 0);
     }
-    function hideCoursePage() {
-      courseDetailPage.style.display = 'none';
-      courseDetailPage.innerHTML = '';
-      mainContent.style.display = 'block';
-    }
     
     function showPostPage(postId) {
         const post = postsData[postId];
         if (!post) return;
         mainContent.style.display = 'none';
         blogPostPage.innerHTML = `
-            <button class="button" onclick="hidePostPage()">← Voltar para o blog</button>
+            <button class="button" onclick="hideDynamicPage('blog')">← Voltar para o blog</button>
             <h2 style="margin-top: 24px;">${post.title}</h2>
             <img src="${post.image}" alt="${post.title}" class="post-header-image">
             <div class="post-content">${post.content}</div>
@@ -539,9 +699,14 @@
         window.scrollTo(0, 0);
     }
 
-    function hidePostPage() {
-        blogPostPage.style.display = 'none';
-        blogPostPage.innerHTML = '';
+    function hideDynamicPage(type) {
+        if (type === 'course') {
+            courseDetailPage.style.display = 'none';
+            courseDetailPage.innerHTML = '';
+        } else if (type === 'blog') {
+            blogPostPage.style.display = 'none';
+            blogPostPage.innerHTML = '';
+        }
         mainContent.style.display = 'block';
     }
 
